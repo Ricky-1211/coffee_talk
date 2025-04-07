@@ -1,14 +1,16 @@
 
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { Menu as MenuIcon, X, Coffee, Heart } from 'lucide-react';
+import { Menu as MenuIcon, X, Coffee, Heart, LogIn, UserCircle } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import { useWatchlist } from '@/context/WatchlistContext';
+import { useAuth } from '../context/AuthContext';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { watchlist } = useWatchlist();
   const location = useLocation();
+  const { isAuthenticated } = useAuth();
   
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -51,6 +53,23 @@ const Navbar = () => {
               </span>
             )}
           </Link>
+          
+          {isAuthenticated ? (
+            <Link to="/profile">
+              <Button variant="ghost" className="flex items-center space-x-2">
+                <UserCircle className="h-5 w-5 text-coffee-medium" />
+                <span>Profile</span>
+              </Button>
+            </Link>
+          ) : (
+            <Link to="/login">
+              <Button variant="ghost" className="flex items-center space-x-2">
+                <LogIn className="h-5 w-5 text-coffee-medium" />
+                <span>Login</span>
+              </Button>
+            </Link>
+          )}
+          
           <Button className="bg-coffee-medium hover:bg-coffee-dark text-white button-hover-effect">
             Order Online
           </Button>
@@ -90,6 +109,27 @@ const Navbar = () => {
               <Heart className="h-5 w-5" />
               <span>Watchlist ({watchlist.length})</span>
             </Link>
+            
+            {isAuthenticated ? (
+              <Link 
+                to="/profile" 
+                className="flex items-center space-x-2 text-foreground hover:text-coffee-medium transition-colors"
+                onClick={toggleMenu}
+              >
+                <UserCircle className="h-5 w-5" />
+                <span>Profile</span>
+              </Link>
+            ) : (
+              <Link 
+                to="/login" 
+                className="flex items-center space-x-2 text-foreground hover:text-coffee-medium transition-colors"
+                onClick={toggleMenu}
+              >
+                <LogIn className="h-5 w-5" />
+                <span>Login</span>
+              </Link>
+            )}
+            
             <Button className="bg-coffee-medium hover:bg-coffee-dark text-white w-full button-hover-effect">
               Order Online
             </Button>

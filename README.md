@@ -2,8 +2,6 @@
 
 ## Project Overview
 
-**Project URL**: [Coffee Shop App](https://lovable.dev/projects/a2c00049-2c9a-4824-891f-aecb86e629b9)
-
 A production-ready, responsive web application for coffee shop management, featuring secure authentication, inventory management, product catalog with advanced filtering, and a comprehensive admin interface.
 
 ## Architecture & Technical Stack
@@ -35,30 +33,9 @@ A production-ready, responsive web application for coffee shop management, featu
 ### Development Workflow Options
 
 #### 1. Lovable AI Platform (Recommended)
-```bash
-# No local setup required
-# Visit the project URL directly
-https://lovable.dev/projects/a2c00049-2c9a-4824-891f-aecb86e629b9
-```
-All changes via Lovable are automatically committed with conventional commit messages.
+``
+some changes via Lovable are automatically committed with conventional commit messages.
 
-#### 2. Local Development Environment
-```bash
-# Clone repository
-git clone <REPOSITORY_URL>
-
-# Navigate to project
-cd brew-heaven
-
-# Install dependencies with frozen lockfile for consistency
-npm ci
-
-# Set up environment variables
-cp .env.example .env.local
-
-# Start development server
-npm run dev
-```
 
 #### 3. GitHub Integration Options
 - **Direct Editing**: Use GitHub's editor for quick changes

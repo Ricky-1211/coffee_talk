@@ -1,4 +1,5 @@
 const User = require("../models/user.model");
+import { errorHandler } from "../utils/error.js"
 
 // Get user profile
 const getUserProfile = async (req, res) => {

@@ -28,7 +28,7 @@ import { componentTagger } from "lovable-tagger";
 export default defineConfig({
       server: {
         host: "::",
-        port: 3001,
+        port: 5000,
         fs: {
           allow: ['.'],
         },

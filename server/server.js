@@ -1,8 +1,12 @@
 const express = require("express");
 const authRoutes = require("./routes/auth.route");
-
+var cors = require('cors')
 const app = express();
 
+
+// Middleware to enable CORS
+
+app.use(cors());
 // Middleware to parse JSON
 app.use(express.json());
 

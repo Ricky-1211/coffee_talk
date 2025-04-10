@@ -1,17 +1,24 @@
-const express = require("express");
-const { register, login, validateToken, resetPassword } = require("../controller/auth.controller");
+import express from "express";
+import multer from "multer";
+import { register, login, validateToken, resetPassword } from "../controller/auth.controller.js";
+
 const router = express.Router();
 
-// Route for user registration
-router.post("/register", register);
+// multer configuration
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, "public/uploads/")
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.originalname)
+  },
+});
 
-// Route for user login
+const upload = multer({ storage });
+
+router.post("/register", upload.single("profileImage"), register);
 router.post("/login", login);
-
-// Route for token validation
-router.get("/validate-token", validateToken);
-
-// Route for password reset
+router.post("/validate-token", validateToken);
 router.post("/reset-password", resetPassword);
 
-module.exports = router;
+export default router;
